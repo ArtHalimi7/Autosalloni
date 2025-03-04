@@ -124,9 +124,9 @@ export const TextHoverEffect = ({
           x2="100%"
           y2="100%"
         >
-          <stop offset="0%" stopColor={gradientColors.stop1} stopOpacity="0.4" />
-          <stop offset="50%" stopColor={gradientColors.stop3} stopOpacity="0.3" />
-          <stop offset="100%" stopColor={gradientColors.stop5} stopOpacity="0.4" />
+          <stop offset="0%" stopColor="#7A7A7A" stopOpacity="0.4" /> {/* Nardo gray */}
+          <stop offset="50%" stopColor="#7A7A7A" stopOpacity="0.3" /> {/* Nardo gray */}
+          <stop offset="100%" stopColor="#7A7A7A" stopOpacity="0.4" /> {/* Nardo gray */}
         </linearGradient>
         
         {/* Hover gradient with more vibrant colors */}
@@ -191,8 +191,11 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.4"
-        className={`font-bold fill-transparent ${textSize} stroke-neutral-200/20 dark:stroke-neutral-800/20`}
-        style={{ opacity: hovered ? 0.7 : 0.3 }}
+        className={`font-bold fill-transparent ${textSize}`}
+        style={{ 
+          stroke: hovered ? 'var(--neutral-200/20)' : '#7A7A7A',
+          opacity: hovered ? 0.7 : 0.3 
+        }}
       >
         {text}
       </text>

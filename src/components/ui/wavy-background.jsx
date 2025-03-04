@@ -50,13 +50,13 @@ export const WavyBackground = ({
     render();
   };
  
-  // Red accent color palette
+  // Red accent color palette with Nardo Gray
   const waveColors = colors ?? [
     "#c01e1e", // Red
-    "#a30f0f", // Darker red
-    "#e82c2c", // Brighter red
+    "#7A7A7A", // Nardo Gray
     "#8b0000", // Dark red
-    "#d13030", // Medium red
+    "#9A9A9A", // Light Nardo Gray
+    "#5A5A5A", // Dark Nardo Gray
   ];
   
   const drawWave = (n) => {

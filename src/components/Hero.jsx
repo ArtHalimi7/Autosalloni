@@ -30,11 +30,11 @@ const Hero = () => {
       {/* Wavy background with red accents */}
       <WavyBackground
         colors={[
-          "#c01e1e",  // Red
-          "#a30f0f",  // Darker red
-          "#e82c2c",  // Brighter red
-          "#8b0000",  // Dark red
-          "#d13030",  // Medium red
+          "#c01e1e", // Red
+          "#7A7A7A", // Nardo Gray
+          "#8b0000", // Dark red
+          "#9A9A9A", // Light Nardo Gray
+          "#5A5A5A", // Dark Nardo Gray
         ]}
         waveWidth={40}
         backgroundFill="black"

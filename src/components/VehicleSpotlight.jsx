@@ -173,15 +173,7 @@ const VehicleSpotlight = ({ autoPlay = true, interval = 10000 }) => {
                           </div>
                         ))}
                       </div>
-                      
-                      <div className="flex flex-wrap gap-4">
-                        <button className="bg-gradient-to-r from-red-700 to-red-900 hover:from-red-800 hover:to-red-950 text-white px-6 py-3 rounded-md font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-red-900/30">
-                          Schedule a Test Drive
-                        </button>
-                        <button className="border border-red-700 text-white px-6 py-3 rounded-md font-semibold transition-all duration-300 hover:bg-red-900/20">
-                          View Details
-                        </button>
-                      </div>
+                    
                     </motion.div>
                   </div>
                 </div>
@@ -190,7 +182,7 @@ const VehicleSpotlight = ({ autoPlay = true, interval = 10000 }) => {
           </div>
 
           {/* Pagination dots */}
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center mt-[-400px] lg:mt-6"> {/* Adjusted top margin */}
             {vehicles.map((_, index) => (
               <button
                 key={index}
@@ -201,25 +193,6 @@ const VehicleSpotlight = ({ autoPlay = true, interval = 10000 }) => {
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}
-          </div>
-
-          {/* Play/Pause button */}
-          <div className="flex justify-center mt-4">
-            <button
-              onClick={() => setIsPlaying(!isPlaying)}
-              className="p-2 text-gray-400 hover:text-red-600 transition-colors duration-300"
-              aria-label={isPlaying ? "Pause carousel" : "Play carousel"}
-            >
-              {isPlaying ? (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                </svg>
-              )}
-            </button>
           </div>
         </div>
       </div>
