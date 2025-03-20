@@ -63,3 +63,9 @@ body {
 .grid-item:not(:nth-last-child(-n+8)) {
   border-bottom: 1px solid #333;
 }
+
+@layer utilities {
+  .bg-gradient-radial {
+    background-image: radial-gradient(circle at center, var(--tw-gradient-stops));
+  }
+}
