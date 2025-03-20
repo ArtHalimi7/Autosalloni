@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Particles from './ui/Particles';
 import { motion } from 'framer-motion';
-import Lanyard from './ui/Lanyard';
+import Lanyard from '../components/Lanyard/Lanyard'
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -161,13 +161,15 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      <style jsx>{`
-        @keyframes shimmer {
-          0% { transform: translateX(-150%) skewX(-20deg); }
-          100% { transform: translateX(400%) skewX(-20deg); }
-        }
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap');
-      `}</style>
+      <style>
+        {`
+          @keyframes shimmer {
+            0% { transform: translateX(-150%) skewX(-20deg); }
+            100% { transform: translateX(400%) skewX(-20deg); }
+          }
+          @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+        `}
+      </style>
     </div>
   )
 }
