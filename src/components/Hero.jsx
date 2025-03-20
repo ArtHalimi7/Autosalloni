@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import Particles from './ui/Particles';
 import { motion } from 'framer-motion';
+import SplitText from './ui/SplitText';
+import Magnet from './ui/Magnet'
+
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -9,8 +12,12 @@ const Hero = () => {
     setIsVisible(true);
   }, []);
 
+  const handleAnimationComplete = () => {
+    console.log('Text animation completed!');
+  };
+
   return (
-    <div style={{ width: '100%', height: '100vh', position: 'relative', overflow: 'hidden' }}>
+    <div style={{ width: '100%', height: '75vh', position: 'relative', overflow: 'hidden' }}>
       <Particles
         particleColors={['#ffffff', '#ffffff']}
         particleCount={400}
@@ -25,10 +32,10 @@ const Hero = () => {
       <div className="hero-content" style={{
         position: 'absolute',
         top: '50%',
-        left: '15%', // Changed from 50% to 15%
-        transform: 'translate(0, -50%)', // Removed X translation
+        left: '5%',
+        transform: 'translate(0, -50%)',
         zIndex: 10,
-        textAlign: 'left', // Changed from center to left
+        textAlign: 'left',
         width: '90%',
         maxWidth: '700px'
       }}>
@@ -37,28 +44,40 @@ const Hero = () => {
           animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -50 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h1 className="hero-title" style={{
+          <div style={{
             fontSize: 'clamp(2.5rem, 8vw, 6rem)',
-            fontWeight: 'bold',
+            fontWeight: '900',
             letterSpacing: '0.1em',
             margin: '0 0 1.5rem',
-            background: 'linear-gradient(45deg, #fff, #aaa, #fff)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            color: '#ffffff',
             textTransform: 'uppercase',
             fontFamily: '"Orbitron", sans-serif',
-            textShadow: '0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2)',
-            lineHeight: '1.1'
+            filter: 'drop-shadow(0 0 15px rgba(255,255,255,0.3))',
+            lineHeight: '1.1',
           }}>
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
-            >
-              Redefining <br/>
-              Expectations
-            </motion.span>
-          </h1>
+            <SplitText
+              text="Redefining"
+              delay={100}
+              animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
+              animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+              easing="easeOutCubic"
+              threshold={0.2}
+              rootMargin="-50px"
+              textAlign="left"
+              onLetterAnimationComplete={handleAnimationComplete}
+            />
+            <SplitText
+              text="Expectations"
+              delay={150}
+              animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
+              animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+              easing="easeOutCubic"
+              threshold={0.2}
+              rootMargin="-50px"
+              textAlign="left"
+              onLetterAnimationComplete={handleAnimationComplete}
+            />
+          </div>
         </motion.div>
 
         <motion.div 
@@ -71,7 +90,7 @@ const Hero = () => {
             background: 'linear-gradient(to right, #fff, transparent)',
             marginBottom: '2rem',
             borderRadius: '10px',
-            marginLeft: 0 // Added to align with text
+            marginLeft: 0
           }}
         />
 
@@ -99,61 +118,10 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 1 }}
           style={{ display: 'flex', gap: '1.5rem' }}
         >
-          <motion.button
-            whileHover={{ scale: 1.05, boxShadow: '0 0 15px rgba(255,255,255,0.5)' }}
-            whileTap={{ scale: 0.98 }}
-            style={{
-              padding: '0.8rem 2.5rem',
-              fontSize: 'clamp(0.9rem, 1.3vw, 1.1rem)',
-              backgroundColor: 'rgba(255, 255, 255, 0.1)',
-              color: 'white',
-              border: '2px solid white',
-              borderRadius: '30px',
-              cursor: 'pointer',
-              fontWeight: 'bold',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              position: 'relative',
-              overflow: 'hidden',
-              fontFamily: '"Rajdhani", sans-serif',
-              backdropFilter: 'blur(4px)'
-            }}
-            className="cta-button"
-          >
-            Explore Now
-            <span style={{
-              position: 'absolute',
-              top: 0,
-              right: 0,
-              width: '30%',
-              height: '100%',
-              background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.5), transparent)',
-              transform: 'skewX(-20deg)',
-              animation: 'shimmer 2s infinite'
-            }}></span>
-          </motion.button>
-          
-          <motion.button
-            whileHover={{ backgroundColor: 'rgba(255,255,255,0.15)', color: '#fff' }}
-            whileTap={{ scale: 0.98 }}
-            style={{
-              padding: '0.8rem 2.5rem',
-              fontSize: 'clamp(0.9rem, 1.3vw, 1.1rem)',
-              backgroundColor: 'transparent',
-              color: 'rgba(255,255,255,0.8)',
-              border: '2px solid rgba(255,255,255,0.3)',
-              borderRadius: '30px',
-              cursor: 'pointer',
-              fontWeight: 'bold',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              fontFamily: '"Rajdhani", sans-serif',
-              backdropFilter: 'blur(4px)',
-              transition: 'all 0.3s ease'
-            }}
-          >
-            Learn More
-          </motion.button>
+        <Magnet padding={50} disabled={false} magnetStrength={80} className="magnet" style={{ display: 'flex', gap: '1.5rem' }}>
+          <a href='#' className='text-white text-2xl border-white rounded-xl px-4 py-4 font-bold border-2'>Contact me now!</a>
+        </Magnet>
+
         </motion.div>
       </div>
 
@@ -187,7 +155,7 @@ const Hero = () => {
         `}
       </style>
     </div>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
