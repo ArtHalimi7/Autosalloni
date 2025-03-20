@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Particles from './ui/Particles';
 import { motion } from 'framer-motion';
-import Lanyard from '../components/Lanyard/Lanyard'
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,17 +22,13 @@ const Hero = () => {
         disableRotation={false}
       />
       
-      <div style={{ position: 'absolute', top: 0, right: 0, width: '60%', height: '100%', zIndex: 5 }}>
-        <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
-      </div>
-      
       <div className="hero-content" style={{
         position: 'absolute',
         top: '50%',
-        left: '15%',
-        transform: 'translateY(-50%)',
+        left: '15%', // Changed from 50% to 15%
+        transform: 'translate(0, -50%)', // Removed X translation
         zIndex: 10,
-        textAlign: 'left',
+        textAlign: 'left', // Changed from center to left
         width: '90%',
         maxWidth: '700px'
       }}>
@@ -75,7 +70,8 @@ const Hero = () => {
             height: '4px',
             background: 'linear-gradient(to right, #fff, transparent)',
             marginBottom: '2rem',
-            borderRadius: '10px'
+            borderRadius: '10px',
+            marginLeft: 0 // Added to align with text
           }}
         />
 
@@ -168,6 +164,26 @@ const Hero = () => {
             100% { transform: translateX(400%) skewX(-20deg); }
           }
           @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+          @media (max-width: 768px) {
+            .hero-content {
+              left: 50% !important;
+              transform: translate(-50%, -50%) !important;
+              text-align: center !important;
+              padding: 0 20px;
+            }
+            
+            .accent-line {
+              margin-left: auto !important;
+              margin-right: auto !important;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .hero-content {
+              width: 95%;
+            }
+          }
         `}
       </style>
     </div>
